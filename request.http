@@ -1,3 +1,9 @@
+### Form
+POST http://localhost:1323/yay HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=foo&password=bar
+
 ### Json
 POST http://localhost:1323/yay HTTP/1.1
 content-type: application/json
@@ -6,9 +12,3 @@ content-type: application/json
     "name": "sample",
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
-
-### Form
-POST http://localhost:1323/yay HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-
-name=foo&password=bar
