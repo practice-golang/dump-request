@@ -1,11 +1,13 @@
 ### Form
 POST http://localhost:1323/yay HTTP/1.1
+User-Agent: rest-client
 Content-Type: application/x-www-form-urlencoded
 
 name=foo&password=bar
 
 ### Json
 POST http://localhost:1323/yay HTTP/1.1
+User-Agent: rest-client
 content-type: application/json
 
 {

@@ -14,15 +14,26 @@ type Response struct {
 	Message string
 }
 
-func bodyDumpHandler(c echo.Context, reqBody, resBody []byte) {
-	fmt.Printf("Request Body: %v\n", string(reqBody))
-	fmt.Printf("Response Body: %v\n", string(resBody))
+func dumpHandler(c echo.Context, reqBody, resBody []byte) {
+	fmt.Println("Request Header:")
+	for name, headers := range c.Request().Header {
+		// name = strings.ToLower(name)
+		for _, header := range headers {
+			fmt.Println(name + " = " + header)
+		}
+	}
+
+	fmt.Println("")
+	fmt.Printf("Request Body:\n%v\n", string(reqBody))
+
+	fmt.Println("")
+	fmt.Printf("Response Body:\n%v\n", string(resBody))
 }
 
 func main() {
 	e := echo.New()
 
-	e.Use(middleware.BodyDump(bodyDumpHandler))
+	e.Use(middleware.BodyDump(dumpHandler))
 
 	e.POST("/yay", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, Response{
